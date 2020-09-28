@@ -17,22 +17,33 @@ of whoever turn it is until it's selected.*/
 
 
 //Variables/////////////////
-let mySpot = document.querySelectorAll('.placement')
+let mySpot = document.querySelectorAll('[data-cell]')
 const player1 = "red"
 const player2 = "yellow"
-let reset = document.querySelector('.reset')
+const reset = document.querySelector('.reset')
+let yellowTurn
+
 
 
 
 //Functions/////////////////
 function handlePlacement(event) {
-    let placement = event.target
+    const placement = event.target
+    const currentClass = yellowTurn ? player2 : player1
+    console.log('clicked')
 }
 
+function clickedReset(event) {
+    startGame()
+}
 
+function startGame() {
+    reload = location.reload()
+}
 
-//Event Listeners/////////////////
-
-document.addEventListener('DOMContentLoaded', () => {
-    handlePlacement()
+//Event Listeners///////////////
+mySpot.forEach(placement => {
+    placement.addEventListener('click', handlePlacement, {once: true})
 })
+
+reset.addEventListener('clicked', clickedReset)

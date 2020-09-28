@@ -49,12 +49,12 @@ span{
     transform: translate(-50%);
 }
 
-.yellow{
+.placement.yellow::after{
     background-color: yellow;
     border-radius: 50%;
 }
 
-.red{
+.placement.red::after{
     background-color: red;
     border-radius: 50%;
 }
