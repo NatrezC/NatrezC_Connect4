@@ -48,3 +48,13 @@ span{
     background-color: blue;
     transform: translate(-50%);
 }
+
+.yellow{
+    background-color: yellow;
+    border-radius: 50%;
+}
+
+.red{
+    background-color: red;
+    border-radius: 50%;
+}
