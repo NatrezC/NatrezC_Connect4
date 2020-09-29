@@ -20,7 +20,7 @@ of whoever turn it is until it's selected.*/
 let mySpot = document.querySelectorAll('[data-cell]')
 const player1 = "red"
 const player2 = "yellow"
-const reset = document.querySelector('.reset')
+const resetButton = document.querySelector('.reset')
 let yellowTurn
 
 
@@ -33,7 +33,7 @@ function handlePlacement(event) {
     console.log('clicked')
 }
 
-function clickedReset(event) {
+function clickedReset() {
     startGame()
 }
 
@@ -46,4 +46,4 @@ mySpot.forEach(placement => {
     placement.addEventListener('click', handlePlacement, {once: true})
 })
 
-reset.addEventListener('clicked', clickedReset)
+resetButton.addEventListener('click', clickedReset)
