@@ -48,7 +48,7 @@ function startGame() {
 //Event Listeners///////////////
 for (let i = 0; i < tableData.length; i++){
     tableData[i].addEventListener('click', (event) => {
-        console.log(`${tableData.target}, ${tableRow.rowIndex}`)
+        console.log(`${event.target.rowIndex}, ${event.target.cellIndex}`)
     })
 }
 // mySpot.forEach(placement => {
