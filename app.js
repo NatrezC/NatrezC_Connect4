@@ -17,6 +17,8 @@ of whoever turn it is until it's selected.*/
 
 
 //Variables/////////////////
+const tableRow = document.getElementsByTagName('tr') //grabs each row
+const tableData = document.getElementsByClassName('placement')//grabs each spot within row
 let mySpot = document.querySelectorAll('[data-cell]')
 const player1 = "red"
 const player2 = "yellow"
@@ -27,11 +29,13 @@ let yellowTurn
 
 
 //Functions/////////////////
-function handlePlacement(event) {
-    const placement = event.target
-    const currentClass = yellowTurn ? player2 : player1
-    console.log('clicked')
-}
+// function handlePlacement(event) {
+//     const placement = event.target
+//     // const currentPlayer = yellowTurn ? player2 : player1
+//     let mySpot =
+    
+//     console.log('clicked')
+// }
 
 function clickedReset() {
     startGame()
@@ -42,8 +46,13 @@ function startGame() {
 }
 
 //Event Listeners///////////////
-mySpot.forEach(placement => {
-    placement.addEventListener('click', handlePlacement, {once: true})
-})
+for (let i = 0; i < tableData.length; i++){
+    tableData[i].addEventListener('click', (event) => {
+        console.log(`click`)
+    })
+}
+// mySpot.forEach(placement => {
+//     placement.addEventListener('click', handlePlacement, {once: true})
+// })
 
 resetButton.addEventListener('click', clickedReset)

@@ -4,7 +4,7 @@
     padding: 0;
 }
 body{
-    background-color: rgba(0, 0, 0, 0.938);
+    background-color:black;
     margin: 25px
 }
 
@@ -47,14 +47,18 @@ span{
     cursor: pointer;
     background-color: blue;
     transform: translate(-50%);
+    text-align: center;
 }
 
-.placement.yellow::after{
+
+.placement.yellow{
     background-color: yellow;
     border-radius: 50%;
+    cursor: not-allowed;
 }
 
-.placement.red::after{
+.placement.red{
     background-color: red;
     border-radius: 50%;
+    cursor: not-allowed;
 }
