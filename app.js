@@ -23,7 +23,7 @@ let mySpot = document.querySelectorAll('[data-cell]')
 const player1 = "red"
 const player2 = "yellow"
 const resetButton = document.querySelector('.reset')
-let yellowTurn
+let redTurn = true
 let turn = document.querySelector('.turn')
 
 
@@ -38,16 +38,19 @@ let turn = document.querySelector('.turn')
 //     console.log('clicked')
 // }
 function togglePlayers() {
-    const player = document.getElementsByClassName('turn');
-    if (player.innerHTML === "Player 1's Turn") {
+    const player = document.getElementById('turn');
+    console.log(player)
+    if (player.innerHTML === "Player 1's Turn"){
         player.innerHTML = "Player 2's Turn"
+        console.log('message')
     } else {
         player.innerHTML = "Player 1's Turn"
+        console.log('messege2')
     }
 }
 
 function switchTurns() {
-    yellowTurn = !yellowTurn
+    redTurn = !redTurn
 }
 
 function clickedReset() {
@@ -58,13 +61,16 @@ function startGame() {
     reload = location.reload()
 }
 
-//Event Listeners///////////////
-for (let i = 0; i < tableData.length; i++){
-    tableData[i].addEventListener('click', (event) => {
-        console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
-    }) //clickable on the game telling which spot is being clicked exactly.
+function handleClick(event){
+    console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
     togglePlayers()
     switchTurns()
+};
+
+//Event Listeners///////////////
+for (let i = 0; i < tableData.length; i++){
+    tableData[i].addEventListener('click', handleClick)
+
 }
 
 // for (let i = 0; i < tableRow.length; i++){
