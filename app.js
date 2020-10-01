@@ -1,5 +1,5 @@
 //obj is for one of the players to get 4 in a row, column or diagonal.
-//create 2 players 1 fed 1 yellow
+//create 2 players 1 red 1 yellow
 //player has to choose a column to play
 //alternate turns
 /*cant choose the same placement that has already been used,
@@ -48,9 +48,15 @@ function startGame() {
 //Event Listeners///////////////
 for (let i = 0; i < tableData.length; i++){
     tableData[i].addEventListener('click', (event) => {
-        console.log(`${event.target.cellIndex}`)
+        console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
     })
 }
+
+// for (let i = 0; i < tableRow.length; i++){
+//     tableRow[i].addEventListener('click', (event) => {
+//         console.log(`${event.target.cellIndex}`)
+//     })
+// }
 // mySpot.forEach(placement => {
 //     placement.addEventListener('click', handlePlacement, {once: true})
 // })
