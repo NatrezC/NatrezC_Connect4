@@ -20,6 +20,13 @@ span{
     color: red;
 }
 
+.turn{
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
 .board{
     width: 600px;
     height: 565px;
