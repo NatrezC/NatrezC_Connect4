@@ -58,13 +58,15 @@ span{
 }
 
 
-.placement.yellow{
+.placement.yellow::after{
+    content: ".";
     background-color: yellow;
     border-radius: 50%;
     cursor: not-allowed;
 }
 
-.placement.red{
+.placement.red::after{
+    content: ".";
     background-color: red;
     border-radius: 50%;
     cursor: not-allowed;

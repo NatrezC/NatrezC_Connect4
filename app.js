@@ -23,7 +23,7 @@ let mySpot = document.querySelectorAll('[data-cell]')
 const player1 = "red"
 const player2 = "yellow"
 const resetButton = document.querySelector('.reset')
-let redTurn = true
+let redTurn = true 
 let turn = document.querySelector('.turn')
 
 
@@ -42,11 +42,15 @@ function togglePlayers() {
     console.log(player)
     if (player.innerHTML === "Player 1's Turn"){
         player.innerHTML = "Player 2's Turn"
-        document.getElementById('turn').style.color ="yellow"
+        document.getElementById('turn').style.color = "yellow"
      } else {
         player.innerHTML = "Player 1's Turn"
         document.getElementById('turn').style.color = "red"
     }
+}
+
+function playColor(slot) {
+    slot.classList.add(currentPlayer)
 }
 
 function switchTurns() {
@@ -65,12 +69,14 @@ function handleClick(event) {
     //console.log the row and the column of the spot that you clicked
     //console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
     //be able to choose and change color of the different spots
-    let row = event.target.parentElement.rowIndex
-    let column = event.target.cellIndex
-    console.log(row)
-    console.log(column)
-    
-
+    //let row = event.target.parentElement.rowIndex
+    //let column = event.target.cellIndex
+    const slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
+    console.log(slot)
+    //console.log(row)
+    //console.log(column)
+    const currentPlayer = redTurn ? player1 : player2
+    playColor(slot, currentPlayer)
     togglePlayers()
     switchTurns()
 };
