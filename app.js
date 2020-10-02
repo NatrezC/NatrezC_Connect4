@@ -42,10 +42,10 @@ function togglePlayers() {
     console.log(player)
     if (player.innerHTML === "Player 1's Turn"){
         player.innerHTML = "Player 2's Turn"
-        console.log('message')
-    } else {
+        document.getElementById('turn').style.color ="yellow"
+     } else {
         player.innerHTML = "Player 1's Turn"
-        console.log('messege2')
+        document.getElementById('turn').style.color = "red"
     }
 }
 
@@ -61,8 +61,16 @@ function startGame() {
     reload = location.reload()
 }
 
-function handleClick(event){
-    console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+function handleClick(event) {
+    //console.log the row and the column of the spot that you clicked
+    //console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+    //be able to choose and change color of the different spots
+    let row = event.target.parentElement.rowIndex
+    let column = event.target.cellIndex
+    console.log(row)
+    console.log(column)
+    
+
     togglePlayers()
     switchTurns()
 };
@@ -72,6 +80,9 @@ for (let i = 0; i < tableData.length; i++){
     tableData[i].addEventListener('click', handleClick)
 
 }
+
+
+
 
 // for (let i = 0; i < tableRow.length; i++){
 //     tableRow[i].addEventListener('click', (event) => {
