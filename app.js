@@ -50,7 +50,11 @@ function togglePlayers() {
 }
 
 function playColor(placement, currentPlayer) {
-    placement.classList.add(currentPlayer)
+    let column = event.target.cellIndex;
+    let row = [];
+    for (let i = 5; i > -1; i--) {
+        placement.classList.add(currentPlayer)
+    }
 }
 
 function switchTurns() {
@@ -67,13 +71,14 @@ function startGame() {
 
 function handleClick(event) {
     //console.log the row and the column of the spot that you clicked
-    //console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+    console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
     //be able to choose and change color of the different spots
-    //let row = event.target.parentElement.rowIndex
+    let row = event.target.parentElement.rowIndex
+    console.log(row)
     //let column = event.target.cellIndex
     //let placement = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
     let placement = event.target
-    console.log(length)
+    console.log(placement)
     //console.log(slot)
     //console.log(row)
     //console.log(column)
