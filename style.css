@@ -28,7 +28,7 @@ span{
 }
 
 .board{
-    width: 600px;
+    width: 650px;
     height: 565px;
     background: blue;
     margin: 50px auto;
@@ -59,14 +59,21 @@ span{
 
 
 .placement.yellow::after{
-    content: ".";
+    content: "";
+    height: 90px;
+    width: 90px;
+    display: flex;
     background-color: yellow;
     border-radius: 50%;
     cursor: not-allowed;
 }
 
 .placement.red::after{
-    content: ".";
+    content:"";
+    height:90px;
+    width: 90px;
+    display: flex;
+    
     background-color: red;
     border-radius: 50%;
     cursor: not-allowed;

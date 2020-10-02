@@ -71,7 +71,7 @@ function handleClick(event) {
     //be able to choose and change color of the different spots
     //let row = event.target.parentElement.rowIndex
     //let column = event.target.cellIndex
-    let slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
+    //let placement = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
     let placement = event.target
     console.log(length)
     //console.log(slot)
