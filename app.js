@@ -49,8 +49,8 @@ function togglePlayers() {
     }
 }
 
-function playColor(slot) {
-    slot.classList.add(currentPlayer)
+function playColor(placement, currentPlayer) {
+    placement.classList.add(currentPlayer)
 }
 
 function switchTurns() {
@@ -71,12 +71,14 @@ function handleClick(event) {
     //be able to choose and change color of the different spots
     //let row = event.target.parentElement.rowIndex
     //let column = event.target.cellIndex
-    const slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
-    console.log(slot)
+    let slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
+    let placement = event.target
+    console.log(length)
+    //console.log(slot)
     //console.log(row)
     //console.log(column)
     const currentPlayer = redTurn ? player1 : player2
-    playColor(slot, currentPlayer)
+    playColor(placement, currentPlayer)
     togglePlayers()
     switchTurns()
 };
