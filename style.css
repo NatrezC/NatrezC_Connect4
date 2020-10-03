@@ -5,7 +5,8 @@
 }
 body{
     background-color:black;
-    margin: 25px
+    margin: 25px;
+    font-family:sans-serif
 }
 
 .title{
@@ -84,7 +85,6 @@ span{
     height:90px;
     width: 90px;
     display: flex;
-    
     background-color:white;
     border-radius: 50%;
     cursor: not-allowed;

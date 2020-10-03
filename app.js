@@ -26,7 +26,6 @@ let playConnect4 = true;
 const player1 = "red"
 const player2 = "yellow"
 let noPlay = "white"
-
 const resetButton = document.querySelector('.reset')
 let redTurn = true 
 let turn = document.querySelector('.turn')
@@ -113,6 +112,18 @@ function nexSlot(colIndex) {
     return alert('No more slots')
 }
 
+function colorOfWinner(placement) {
+    const classList = changeClasstoArray(placement)
+    if (classList.includes('yellow')) return 'yellow'
+    if (classList.includes('red')) return 'red'
+}
+
+function winnerWinner(placement) {
+    //let winnerPlacement = [placement]
+    if (winnerPlacement.length = 4) return false;
+    playConnect4 = false;
+}
+
 function handleClick(event) {
     let placement = event.target
     const [rowIndex, colIndex] = findPlacementLocation(placement)
@@ -125,6 +136,8 @@ function handleClick(event) {
     openSlot.classList.add(redTurn ? "red": 'yellow')
     togglePlayers()
     switchTurns()
+    winnerWinner(openSlot)
+    
 };
 
 //Event Listeners///////////////
