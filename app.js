@@ -68,9 +68,10 @@ function togglePlayers() {
 
 
 function changeClasstoArray(placement) {
+    //tells you which class you are using
     const classList = placement.classList;
     return [...classList]
-    console.log(classList)
+    //console.log(classList)
 }
 
 function findPlacementLocation(placement) {
@@ -99,7 +100,8 @@ function startGame() {
     reload = location.reload()
 }
 function nextSlot(colIndex) {
-    const column = columns[colIndex];
+    //goes through the columns array and gets the colIndex
+    const column = columns[colIndex]; 
     for (const placement of column) {
         const classList = changeClasstoArray(placement)
         //check to see if classlist has red or yellow class
