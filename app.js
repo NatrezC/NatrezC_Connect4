@@ -21,15 +21,18 @@ const allSlots = document.querySelectorAll('.placement')
 const tableRow = document.getElementsByTagName('tr') //grabs each row
 const tableColumn = document.getElementsByTagName('td')//grabs each spot within row
 let mySpot = document.querySelectorAll('tr')
+
+let playConnect4 = true;
 const player1 = "red"
 const player2 = "yellow"
 let noPlay = "white"
+
 const resetButton = document.querySelector('.reset')
 let redTurn = true 
 let turn = document.querySelector('.turn')
 //const rows = ["F", "E", "D", "C", "A"]
 
-// columns ///////////grabs all placement in each column
+// columns ///////////grabs all placement in each column starting from the bottom hopefully to go bottom up
 const column0 = [allSlots[35], allSlots[28], allSlots[21], allSlots[14], allSlots[7], allSlots[0]];
 const column1 = [allSlots[36], allSlots[29], allSlots[22], allSlots[15], allSlots[8], allSlots[1]];
 const column2 = [allSlots[37], allSlots[30], allSlots[23], allSlots[16], allSlots[9], allSlots[2]];
@@ -50,6 +53,8 @@ const row5 = [allSlots[35], allSlots[36], allSlots[37], allSlots[38], allSlots[3
 const rows = [row0, row1, row2, row3, row4, row5];
 console.log(row0)
 
+
+//Functions
 function togglePlayers() {
     const player = document.getElementById('turn');
     //console.log(player)
@@ -61,6 +66,25 @@ function togglePlayers() {
         document.getElementById('turn').style.color = "red"
     }
 }
+
+function handleHoverMethod(event) {
+    const placement = event.target
+    findPlacementLocation(placement)
+}
+
+function changeClasstoArray(placement) {
+    const classList = placement.classList;
+    return [...classList]
+    console.log(classList)
+}
+
+function findPlacementLocation(placement) {
+    const classList = changeClasstoArray(placement);
+    const rowClass = classList.find(specific => specific.includes('row'))
+    const colClass = classList.find(specific => specific.includes('col'))
+    console.log(rowClass, colClass)
+}
+
 function playColor(placement, currentPlayer, slot, row) {
     // console.log(tableColumn,'????')
     // // let column = event.target.cellIndex;
@@ -116,9 +140,13 @@ function handleClick(event) {
 //Event Listeners///////////////
 for (let i = 0; i < tableColumn.length; i++){
     tableColumn[i].addEventListener('click', handleClick)
-    
 }
 
+for (const row of rows) {
+    for (const placement of row) {
+        placement.addEventListener('mouseover', handleHoverMethod)
+    }
+}
 
 resetButton.addEventListener('click', clickedReset)
 
