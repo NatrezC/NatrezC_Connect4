@@ -78,3 +78,13 @@ span{
     border-radius: 50%;
     cursor: not-allowed;
 }
+
+.placement.white::after{
+    content:"";
+    height:90px;
+    width: 90px;
+    display: flex;
+    
+    background-color:white;
+    border-radius: 50%;
+    cursor: not-allowed;
