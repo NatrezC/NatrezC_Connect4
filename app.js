@@ -145,33 +145,19 @@ function handleClick(event) {
 
     //check who's turn and place your color
     openSlot.classList.add(redTurn ? "red": 'yellow')
-    //console.log the row and the column of the spot that you clicked
-    //console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
-    //be able to choose and change color of the different spots
-    //let row = event.target.parentElement.rowIndex
-    //console.log(row)
-    //let column = event.target.cellIndex
-    // let slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
-    // console.log(slot)
-    //console.log(placement)
-    //console.log(slot)
-    //console.log(row, "........")
-    //console.log(column)
-    //const currentPlayer = redTurn ? player1 : player2
-    //playColor(placement, currentPlayer, slot, row)
     togglePlayers()
     switchTurns()
 };
 
 //Event Listeners///////////////
 // for (let i = 0; i < tableColumn.length; i++){
-//     tableColumn[i].addEventListener('click', handleClick)
-// }
-
-for (const row of rows) {
-    for (const placement of row) {
-        placement.addEventListener('mouseover', handleHoverMethod)
-        placement.addEventListener('click', handleClick, {once:turn})
+    //     tableColumn[i].addEventListener('click', handleClick)
+    // }
+    
+    for (const row of rows) {
+        for (const placement of row) {
+            placement.addEventListener('mouseover', handleHoverMethod)
+        placement.addEventListener('click', handleClick)
     }
 }
 
@@ -222,19 +208,34 @@ resetButton.addEventListener('click', clickedReset)
                             //     placement.addEventListener('click', handlePlacement, {once: true})
                             // })
                             //     const placement = event.target
-                        //     // const currentPlayer = yellowTurn ? player2 : player1
-                        //     let mySpot =
-                        
-                        //     console.log('clicked')
-                        // }
-                        //let Connect4 = {}
-                        
-                        // let Connect4 =[
-                        //         [0, 0, 0, 0, 0, 0, 0],
-                        //         [0, 0, 0, 0, 0, 0, 0],
-                        //         [0, 0, 0, 0, 0, 0, 0],
-                        //         [0, 0, 0, 0, 0, 0, 0],
-                        //         [0, 0, 0, 0, 0, 0, 0],
-                        //         [0, 0, 0, 0, 0, 0, 0]
-                        // ]
-                        // const numberToWin = 4;
+                            //     // const currentPlayer = yellowTurn ? player2 : player1
+                            //     let mySpot =
+                            
+                            //     console.log('clicked')
+                            // }
+                            //let Connect4 = {}
+                            
+                            // let Connect4 =[
+                                //         [0, 0, 0, 0, 0, 0, 0],
+                                //         [0, 0, 0, 0, 0, 0, 0],
+                                //         [0, 0, 0, 0, 0, 0, 0],
+                                //         [0, 0, 0, 0, 0, 0, 0],
+                                //         [0, 0, 0, 0, 0, 0, 0],
+                                //         [0, 0, 0, 0, 0, 0, 0]
+                                // ]
+                                // const numberToWin = 4;
+
+                                //console.log the row and the column of the spot that you clicked
+                                //console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
+                                //be able to choose and change color of the different spots
+                                //let row = event.target.parentElement.rowIndex
+                                //console.log(row)
+                                //let column = event.target.cellIndex
+                                // let slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
+                                // console.log(slot)
+                                //console.log(placement)
+                                //console.log(slot)
+                                //console.log(row, "........")
+                                //console.log(column)
+                                //const currentPlayer = redTurn ? player1 : player2
+                                //playColor(placement, currentPlayer, slot, row)
