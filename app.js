@@ -98,7 +98,7 @@ function clickedReset() {
 function startGame() {
     reload = location.reload()
 }
-function nexSlot(colIndex) {
+function nextSlot(colIndex) {
     const column = columns[colIndex];
     for (const placement of column) {
         const classList = changeClasstoArray(placement)
@@ -122,13 +122,13 @@ function winnerWinner(placement) {
     //let winnerPlacement = [placement]
     if (winnerPlacement.length = 4) return false;
     playConnect4 = false;
-    
+
 }
 
 function handleClick(event) {
     let placement = event.target
     const [rowIndex, colIndex] = findPlacementLocation(placement)
-    const openSlot = nexSlot(colIndex)
+    const openSlot = nextSlot(colIndex)
     
     //return nothing if no open slot
     if (!openSlot) return;
