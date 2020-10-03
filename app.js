@@ -122,6 +122,7 @@ function winnerWinner(placement) {
     //let winnerPlacement = [placement]
     if (winnerPlacement.length = 4) return false;
     playConnect4 = false;
+    
 }
 
 function handleClick(event) {
