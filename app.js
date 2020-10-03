@@ -17,6 +17,7 @@ of whoever turn it is until it's selected.*/
 
 
 //Variables/////////////////
+const allSlots = document.querySelectorAll('.placement')
 const tableRow = document.getElementsByTagName('tr') //grabs each row
 const tableColumn = document.getElementsByTagName('td')//grabs each spot within row
 let mySpot = document.querySelectorAll('tr')
@@ -26,35 +27,36 @@ let noPlay = "white"
 const resetButton = document.querySelector('.reset')
 let redTurn = true 
 let turn = document.querySelector('.turn')
-const rows = ["F", "E", "D", "C", "B", "A"]
-//let Connect4 = {}
+//const rows = ["F", "E", "D", "C", "A"]
 
-let Connect4 =[
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0]
-]
-const numberToWin = 4;
+// columns ///////////grabs all placement in each column
+const column0 = [allSlots[35], allSlots[28], allSlots[21], allSlots[14], allSlots[7], allSlots[0]];
+const column1 = [allSlots[36], allSlots[29], allSlots[22], allSlots[15], allSlots[8], allSlots[1]];
+const column2 = [allSlots[37], allSlots[30], allSlots[23], allSlots[16], allSlots[9], allSlots[2]];
+const column3 = [allSlots[38], allSlots[31], allSlots[24], allSlots[17], allSlots[10], allSlots[3]];
+const column4 = [allSlots[39], allSlots[32], allSlots[25], allSlots[18], allSlots[11], allSlots[4]];
+const column5 = [allSlots[40], allSlots[33], allSlots[26], allSlots[19], allSlots[12], allSlots[5]];
+const column6 = [allSlots[41], allSlots[34], allSlots[27], allSlots[20], allSlots[13], allSlots[6]];
+const columns = [column0, column1, column2, column3, column4, column5, column6];
+console.log(column0)
 
+// rows ////////grabs all placement in each row
+const row0 = [allSlots[0], allSlots[1], allSlots[2], allSlots[3], allSlots[4], allSlots[5], allSlots[6]];
+const row1 = [allSlots[7], allSlots[8], allSlots[9], allSlots[10], allSlots[11], allSlots[12], allSlots[13]];
+const row2 = [allSlots[14], allSlots[15], allSlots[16], allSlots[17], allSlots[18], allSlots[19], allSlots[20]];
+const row3 = [allSlots[21], allSlots[22], allSlots[23], allSlots[24], allSlots[25], allSlots[26], allSlots[27]];
+const row4 = [allSlots[28], allSlots[29], allSlots[30], allSlots[31], allSlots[32], allSlots[33], allSlots[34]];
+const row5 = [allSlots[35], allSlots[36], allSlots[37], allSlots[38], allSlots[39], allSlots[40], allSlots[41]];
+const rows = [row0, row1, row2, row3, row4, row5];
+console.log(row0)
 
-//Functions/////////////////
-// function handlePlacement(event) {
-//     const placement = event.target
-//     // const currentPlayer = yellowTurn ? player2 : player1
-//     let mySpot =
-    
-//     console.log('clicked')
-// }
 function togglePlayers() {
     const player = document.getElementById('turn');
     //console.log(player)
     if (player.innerHTML === "Player 1's Turn"){
         player.innerHTML = "Player 2's Turn"
         document.getElementById('turn').style.color = "yellow"
-     } else {
+    } else {
         player.innerHTML = "Player 1's Turn"
         document.getElementById('turn').style.color = "red"
     }
@@ -64,19 +66,19 @@ function playColor(placement, currentPlayer, slot, row) {
     // // let column = event.target.cellIndex;
     // // let row = [];
     // for (let i = 5; i > -1; i--) {
-    //     if (tableColumn[i] === 5) {
-    //         slot.classList.add(red)
-    //     }
-    //     placement.classList.add(currentPlayer)
-    // }
-    // console.log(row, "//////")
-    // for (i = 5; i > -1; i--){
-    //     if (tableRow[5] === noPlay) {
-    //         placement.classList.add(currentPlayer)
-    //     }
-        //console.log(rows[i])
-
-    //}
+        //     if (tableColumn[i] === 5) {
+            //         slot.classList.add(red)
+            //     }
+            //     placement.classList.add(currentPlayer)
+            // }
+            // console.log(row, "//////")
+            // for (i = 5; i > -1; i--){
+                //     if (tableRow[5] === noPlay) {
+                    //         placement.classList.add(currentPlayer)
+                    //     }
+                    //console.log(rows[i])
+                    
+                    //}
 }
 
 function switchTurns() {
@@ -114,42 +116,70 @@ function handleClick(event) {
 //Event Listeners///////////////
 for (let i = 0; i < tableColumn.length; i++){
     tableColumn[i].addEventListener('click', handleClick)
-
+    
 }
 
-//vars we have:
-//e.target -> clicked slot
-//slot -> string: row, col
-
-// loop through the slots in the column of the clicked slot, starting at row 0
-// ex:
-// if clicked slot is B3 (row=2, col=3),
-// check 6, 3
-// check 5, 3
-// check 4, 3, etc.
-// when checking, IF the slot you're currently checking is full (has class of red or yellow), then check the next available slot, OTHERWISE add class of red or yellow
-// <==>
-// a loop through the cells from column of selected slot, from bottom to top {
-//     if(curr.classList.contains('red')||curr.clasList.contains('yellow')) {
-//         move on
-//     } else {
-//         add the appropriate class
-//         break out of the loop (so that it doesn't keep adding classes to available cells)
-//     }
-// }
-
-
-
-
-
-
-// for (let i = 0; i < tableRow.length; i++){
-//     tableRow[i].addEventListener('click', (event) => {
-//         console.log(`${event.target.cellIndex}`)
-//     })
-// }
-// mySpot.forEach(placement => {
-//     placement.addEventListener('click', handlePlacement, {once: true})
-// })
 
 resetButton.addEventListener('click', clickedReset)
+
+
+
+
+
+
+
+
+/////////////TRASH//////////////////////////////
+//Functions/////////////////
+// function handlePlacement(event) {
+    //vars we have:
+    //e.target -> clicked slot
+    //slot -> string: row, col
+    
+    // loop through the slots in the column of the clicked slot, starting at row 0
+    // ex:
+    // if clicked slot is B3 (row=2, col=3),
+    // check 6, 3
+    // check 5, 3
+    // check 4, 3, etc.
+    // when checking, IF the slot you're currently checking is full (has class of red or yellow), then check the next available slot, OTHERWISE add class of red or yellow
+    // <==>
+    // a loop through the cells from column of selected slot, from bottom to top {
+        //     if(curr.classList.contains('red')||curr.clasList.contains('yellow')) {
+            //         move on
+            //     } else {
+                //         add the appropriate class
+                //         break out of the loop (so that it doesn't keep adding classes to available cells)
+                //     }
+                // }
+                
+                
+                
+                
+                
+                
+                // for (let i = 0; i < tableRow.length; i++){
+                    //     tableRow[i].addEventListener('click', (event) => {
+                        //         console.log(`${event.target.cellIndex}`)
+                        //     })
+                        // }
+                        // mySpot.forEach(placement => {
+                            //     placement.addEventListener('click', handlePlacement, {once: true})
+                            // })
+                            //     const placement = event.target
+                        //     // const currentPlayer = yellowTurn ? player2 : player1
+                        //     let mySpot =
+                        
+                        //     console.log('clicked')
+                        // }
+                        //let Connect4 = {}
+                        
+                        // let Connect4 =[
+                        //         [0, 0, 0, 0, 0, 0, 0],
+                        //         [0, 0, 0, 0, 0, 0, 0],
+                        //         [0, 0, 0, 0, 0, 0, 0],
+                        //         [0, 0, 0, 0, 0, 0, 0],
+                        //         [0, 0, 0, 0, 0, 0, 0],
+                        //         [0, 0, 0, 0, 0, 0, 0]
+                        // ]
+                        // const numberToWin = 4;
