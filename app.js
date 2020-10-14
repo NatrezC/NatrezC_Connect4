@@ -139,21 +139,24 @@ function checkWhoWon(placement) {
     console.log(colCheck, "colCheck")
     //checks the farthest left column
     while(colCheck >= 0) {
+        //placement associated with the row and column
         const placeCheck = rows[rowCheck][colCheck];
         console.log(placeCheck,'555')
+        //check if color matches players turn
         if (colorOfWinner(placeCheck)===color){
             winningPlace.push(placeCheck);
             colCheck--;
         }else {
+            //break while loop if color changes or empty slot
             break;
         }
     }
-    rowCheck = rowIndex + 1;
-  while (rowCheck <= 5) {
+    colCheck = colIndex + 1;
+  while (colCheck <= 6) {
     const placeCheck = rows[rowCheck][colCheck];
     if (colorOfWinner(placeCheck) === color) {
       winningPlace.push(cellCheck);
-      rowCheck++;
+      colCheck++;
     } else {
       break;
     }
