@@ -124,7 +124,7 @@ function colorOfWinner(placement) {
 }
 
 function checkWhoWon(placement) {
-    console.log('winner')
+    //console.log('winner')
     const color = colorOfWinner(placement)
     const [rowIndex, colIndex]=findPlacementLocation(placement);
     console.log(color)
@@ -151,23 +151,52 @@ function checkWhoWon(placement) {
             break;
         }
     }
+    //check right side of column
     colCheck = colIndex + 1;
   while (colCheck <= 6) {
     const placeCheck = rows[rowCheck][colCheck];
     if (colorOfWinner(placeCheck) === color) {
-      winningPlace.push(cellCheck);
+      winningPlace.push(placeCheck);
       colCheck++;
     } else {
-      break;
+        break;
+    }
+  }
+  let isWinningCombo = winnerWinner(winningPlace);
+  if (isWinningCombo) return;
+
+  //vertical win
+  winningPlace =[placement]
+  rowCheck = rowIndex - 1
+  colCheck = colIndex
+  console.log(rowCheck,'vert')
+  while (rowCheck >= 0){
+      const placeCheck = rows[rowCheck][colCheck]
+      if(colorOfWinner(placeCheck) === color){
+          winningPlace.push(placeCheck)
+          rowCheck--;
+      } else{
+          break;
+      }
+  }
+  rowCheck = rowIndex + 1;
+  while (rowCheck <= 5) {
+    const cellCheck = rows[rowCheck][colCheck];
+    if (colorOfWinner(placeCheck) === color) {
+      winningCells.push(placeCheck);
+      rowCheck++;
+    } else {
+        break;
     }
   }
   isWinningCombo = winnerWinner(winningPlace);
-  if (isWinningCombo) return;
+  if (isWinningCombo) return; 
 }
 
 function winnerWinner(placements) {
     //let winnerPlacement = [placement]
-    if (placements.length < 4) return false;
+    //if winner get connect 4
+    if (placements.length < 4) return;
     playConnect4 = false;
     for(const placement of placements) {
         console.log('You won')
@@ -177,6 +206,7 @@ function winnerWinner(placements) {
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 function handleClick(event) {
+    if(!playConnect4) return;
     let placement = event.target
     const [rowIndex, colIndex] = findPlacementLocation(placement)
     const openSlot = nextSlot(colIndex)
