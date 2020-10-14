@@ -29,7 +29,6 @@ let noPlay = "white"
 const resetButton = document.querySelector('.reset')
 let redTurn = true 
 let turn = document.querySelector('.turn')
-//const rows = ["F", "E", "D", "C", "A"]
 
 // columns ///////////grabs all placement in each column starting from the bottom hopefully to go bottom up
 const column0 = [allSlots[35], allSlots[28], allSlots[21], allSlots[14], allSlots[7], allSlots[0]];
@@ -40,7 +39,7 @@ const column4 = [allSlots[39], allSlots[32], allSlots[25], allSlots[18], allSlot
 const column5 = [allSlots[40], allSlots[33], allSlots[26], allSlots[19], allSlots[12], allSlots[5]];
 const column6 = [allSlots[41], allSlots[34], allSlots[27], allSlots[20], allSlots[13], allSlots[6]];
 const columns = [column0, column1, column2, column3, column4, column5, column6];
-console.log(column0)
+//console.log(column0)
 
 // rows ////////grabs all placement in each row
 const row0 = [allSlots[0], allSlots[1], allSlots[2], allSlots[3], allSlots[4], allSlots[5], allSlots[6]];
@@ -50,7 +49,7 @@ const row3 = [allSlots[21], allSlots[22], allSlots[23], allSlots[24], allSlots[2
 const row4 = [allSlots[28], allSlots[29], allSlots[30], allSlots[31], allSlots[32], allSlots[33], allSlots[34]];
 const row5 = [allSlots[35], allSlots[36], allSlots[37], allSlots[38], allSlots[39], allSlots[40], allSlots[41]];
 const rows = [row0, row1, row2, row3, row4, row5];
-console.log(row0)
+//console.log(row0)
 
 
 //Functions
@@ -72,12 +71,12 @@ function changeClasstoArray(placement) {
     const classList = placement.classList;
     return [...classList]
     //console.log(classList)
+    console.log("placement:", [...classList])
 }
-
 function findPlacementLocation(placement) {
     const classList = changeClasstoArray(placement);
-    const rowClass = classList.find(specific => specific.includes('row'))
-    const colClass = classList.find(specific => specific.includes('col'))
+    const rowClass = classList.find(className => className.includes('row'))
+    const colClass = classList.find(className => className.includes('col'))
     //get just the numbers 
     const rowIndex = rowClass[4]
     const colIndex = colClass[4]
@@ -113,34 +112,79 @@ function nextSlot(colIndex) {
     //alert if filled that their is no more slots available
     return alert('No more slots')
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////
 function colorOfWinner(placement) {
     const classList = changeClasstoArray(placement)
-    if (classList.includes('yellow')) return 'yellow'
-    if (classList.includes('red')) return 'red'
+    //if yellow turn, return yellow
+    if (classList.includes('yellow')) return 'yellow';
+    //if red turn, return red
+    if (classList.includes('red')) return 'red';
+    // if neither return nothing
+    return null;
 }
 
-function winnerWinner(placement) {
+function checkWhoWon(placement) {
+    console.log('winner')
+    const color = colorOfWinner(placement)
+    const [rowIndex, colIndex]=findPlacementLocation(placement);
+    console.log(color)
+
+    //horizontal winner
+    let winningPlace = [placement];
+    //
+    let rowCheck = rowIndex;
+    let colCheck = colIndex-1;
+    console.log(colIndex)
+    console.log(rowCheck,'rowCheck')
+    console.log(colCheck, "colCheck")
+    //checks the farthest left column
+    while(colCheck >= 0) {
+        const placeCheck = rows[rowCheck][colCheck];
+        console.log(placeCheck,'555')
+        if (colorOfWinner(placeCheck)===color){
+            winningPlace.push(placeCheck);
+            colCheck--;
+        }else {
+            break;
+        }
+    }
+    rowCheck = rowIndex + 1;
+  while (rowCheck <= 5) {
+    const placeCheck = rows[rowCheck][colCheck];
+    if (colorOfWinner(placeCheck) === color) {
+      winningPlace.push(cellCheck);
+      rowCheck++;
+    } else {
+      break;
+    }
+  }
+  isWinningCombo = winnerWinner(winningPlace);
+  if (isWinningCombo) return;
+}
+
+function winnerWinner(placements) {
     //let winnerPlacement = [placement]
-    if (winnerPlacement.length = 4) return false;
+    if (placements.length < 4) return false;
     playConnect4 = false;
-
+    for(const placement of placements) {
+        console.log('You won')
+    }
 }
 
+
+///////////////////////////////////////////////////////////////////////////////////////////
 function handleClick(event) {
     let placement = event.target
     const [rowIndex, colIndex] = findPlacementLocation(placement)
     const openSlot = nextSlot(colIndex)
-    
     //return nothing if no open slot
     if (!openSlot) return;
-    
     //check who's turn and place your color
     openSlot.classList.add(redTurn ? "red": 'yellow')
     togglePlayers()
     switchTurns()
-    winnerWinner(openSlot)
-    
+    checkWhoWon(openSlot)
+    console.log(openSlot,'ddd')
 };
 
 //Event Listeners///////////////
@@ -253,8 +297,9 @@ function handleClick(event) {
                                                         
                                                         
                                                         //placement.addEventListener('mouseover', handleHoverMethod)
-                                                            // function handleHoverMethod(event) {
+                                                        // function handleHoverMethod(event) {
                                                             //     const placement = event.target
                                                             //     const output=findPlacementLocation(placement)
                                                             //     console.log(output)
                                                             // }
+                                                            //const rows = ["F", "E", "D", "C", "A"]
