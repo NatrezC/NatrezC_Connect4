@@ -190,7 +190,36 @@ function checkWhoWon(placement) {
     }
   }
   isWinningCombo = winnerWinner(winningPlace);
-  if (isWinningCombo) return; 
+  if (isWinningCombo) return;
+  
+    //diagonal left to right going up
+    winningPlace = [placement];
+  rowCheck = rowIndex + 1;
+  colCheck = colIndex - 1;
+  while (colCheck >= 0 && rowCheck <= 5) {
+    const placeCheck = rows[rowCheck][colCheck];
+    if (colorOfWinner(placeCheck) === color) {
+      winningPlace.push(placeCheck);
+      rowCheck++;
+      colCheck--;
+    } else {
+      break;
+    }
+  }
+  rowCheck = rowIndex - 1;
+  colCheck = colIndex + 1;
+  while (colCheck <= 6 && rowCheck >= 0) {
+    const placeCheck = rows[rowCheck][colCheck];
+    if (colorOfWinner(placeCheck) === color) {
+      winningPlace.push(placeCheck);
+      rowCheck--;
+      colCheck++;
+    } else {
+      break;
+    }
+  }
+  isWinningCombo = winnerWinner(winningPlace);
+  if (isWinningCombo) return;
 }
 
 function winnerWinner(placements) {
