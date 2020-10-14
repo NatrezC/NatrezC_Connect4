@@ -4,6 +4,9 @@
 ### Concept:
 Connect 4 is a two player game that you play to get 4 in a row. Player 1 goes first. After goes player2. The two players alternate until one player gets 4 pieces in a row going straight across, in a column, or even diagonally.
 
+### Instructions:
+Player 1 also with the red chip goes first. 
+
 ### Technologies Used:
 HTML
 CSS
