@@ -181,9 +181,9 @@ function checkWhoWon(placement) {
   }
   rowCheck = rowIndex + 1;
   while (rowCheck <= 5) {
-    const cellCheck = rows[rowCheck][colCheck];
+    const placeCheck = rows[rowCheck][colCheck];
     if (colorOfWinner(placeCheck) === color) {
-      winningCells.push(placeCheck);
+      winningPlace.push(placeCheck);
       rowCheck++;
     } else {
         break;
@@ -196,16 +196,18 @@ function checkWhoWon(placement) {
 function winnerWinner(placements) {
     //let winnerPlacement = [placement]
     //if winner get connect 4
-    if (placements.length < 4) return;
+    if (placements.length < 4) return false;
     playConnect4 = false;
     for(const placement of placements) {
         console.log('You won')
     }
+    return true;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 function handleClick(event) {
+    //if winner is made dont click
     if(!playConnect4) return;
     let placement = event.target
     const [rowIndex, colIndex] = findPlacementLocation(placement)
