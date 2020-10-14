@@ -91,23 +91,19 @@ function switchTurns() {
     redTurn = !redTurn
 }
 
-function clickedReset() {
-    startGame()
-}
-
 function startGame() {
-    playConnect4 = true;
-    redTurn =  true;
-    document.getElementById('turn').innerHTML = "Player 1's Turn"
-    document.getElementById('turn').style.color = 'red'
     for (const row of rows){
         for(const placement of row){
             placement.classList.remove('red')
             placement.classList.remove('yellow')
             placement.classList.remove('winner')
-
+            
         }
     }
+    playConnect4 = true;
+    redTurn =  true;
+    document.getElementById('turn').innerHTML = "Player 1's Turn"
+    document.getElementById('turn').style.color = 'red'
 }
 function nextSlot(colIndex) {
     //goes through the columns array and gets the colIndex
@@ -275,7 +271,7 @@ function winnerWinner(placements) {
         turn.innerHTML = `${redTurn ? 'yellow' : 'red'} won!!!`
         document.getElementById('turn').style.color = winner
         //change color of placement when won
-        placement.classList.add('gray')
+        //placement.classList.add('gray')
         console.log(placements,"winner")
     }
     return true;
@@ -310,7 +306,7 @@ function handleClick(event) {
         }
     }
     
-    resetButton.addEventListener('click', clickedReset)
+    resetButton.addEventListener('click', startGame)
     
     
     
