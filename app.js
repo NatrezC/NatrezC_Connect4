@@ -13,8 +13,6 @@ want to place your piece*/
 /*or when you hover over a div it changes into the color 
 of whoever turn it is until it's selected.*/
 
-//get lucky enough to have time to create a cpu
-
 
 //Variables/////////////////
 const allSlots = document.querySelectorAll('.placement')
@@ -25,7 +23,7 @@ let mySpot = document.querySelectorAll('tr')
 let playConnect4 = true;
 let player1 = "red"
 let player2 = "yellow"
-const winner = "black"
+const winner = "gray"
 let noPlay = "white"
 const resetButton = document.querySelector('.reset')
 let redTurn = true 
@@ -76,6 +74,7 @@ function changeClasstoArray(placement) {
 }
 function findPlacementLocation(placement) {
     const classList = changeClasstoArray(placement);
+    //grabs the row-number and col-number
     const rowClass = classList.find(className => className.includes('row'))
     const colClass = classList.find(className => className.includes('col'))
     //get just the numbers 
@@ -97,7 +96,18 @@ function clickedReset() {
 }
 
 function startGame() {
-    reload = location.reload()
+    playConnect4 = true;
+    redTurn =  true;
+    document.getElementById('turn').innerHTML = "Player 1's Turn"
+    document.getElementById('turn').style.color = 'red'
+    for (const row of rows){
+        for(const placement of row){
+            placement.classList.remove('red')
+            placement.classList.remove('yellow')
+            placement.classList.remove('winner')
+
+        }
+    }
 }
 function nextSlot(colIndex) {
     //goes through the columns array and gets the colIndex
@@ -243,8 +253,8 @@ function checkWhoWon(placement) {
     const placeCheck = rows[rowCheck][colCheck];
     if (colorOfWinner(placeCheck) === color) {
       winningPlace.push(placeCheck);
-      rowToCheck++;
-      colToCheck++;
+      rowCheck++;
+      colCheck++;
     } else {
       break;
     }
@@ -261,8 +271,11 @@ function winnerWinner(placements) {
     if (placements.length < 4) return false;
     playConnect4 = false;
     for(const placement of placements) {
-        let selectSlots = placements
-        selectSlots.classList.add('black')
+        //change the to see who won
+        turn.innerHTML = `${redTurn ? 'yellow' : 'red'} won!!!`
+        document.getElementById('turn').style.color = winner
+        //change color of placement when won
+        placement.classList.add('gray')
         console.log(placements,"winner")
     }
     return true;
@@ -283,7 +296,7 @@ function handleClick(event) {
     togglePlayers()
     switchTurns()
     checkWhoWon(openSlot)
-    console.log(openSlot,'ddd')
+    console.log('openSlot: ', openSlot,)
 };
 
 //Event Listeners///////////////

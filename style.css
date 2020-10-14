@@ -89,12 +89,12 @@ span{
     cursor: not-allowed;
 }
 
-.placement.black::after{
+.placement.gray::after{
     content:"";
     height:90px;
     width: 90px;
     display: flex;
-    background-color:black;
+    background-color:gray;
     border-radius: 50%;
     cursor: not-allowed;
 }
