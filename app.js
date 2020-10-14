@@ -271,7 +271,6 @@ function winnerWinner(placements) {
         turn.innerHTML = `${redTurn ? 'yellow' : 'red'} won!!!`
         document.getElementById('turn').style.color = winner
         //change color of placement when won
-        //placement.classList.add('gray')
         console.log(placements,"winner")
     }
     return true;
@@ -296,11 +295,7 @@ function handleClick(event) {
 };
 
 //Event Listeners///////////////
-// for (let i = 0; i < tableColumn.length; i++){
-    //     tableColumn[i].addEventListener('click', handleClick)
-    // }
-    
-    for (const row of rows) {
+for (const row of rows) {
         for (const placement of row) {
             placement.addEventListener('click', handleClick)
         }
@@ -315,99 +310,3 @@ function handleClick(event) {
     
     
     
-    /////////////TRASH//////////////////////////////
-    //Functions/////////////////
-    // function handlePlacement(event) {
-        //vars we have:
-        //e.target -> clicked slot
-        //slot -> string: row, col
-        
-        // loop through the slots in the column of the clicked slot, starting at row 0
-        // ex:
-        // if clicked slot is B3 (row=2, col=3),
-        // check 6, 3
-        // check 5, 3
-        // check 4, 3, etc.
-        // when checking, IF the slot you're currently checking is full (has class of red or yellow), then check the next available slot, OTHERWISE add class of red or yellow
-        // <==>
-        // a loop through the cells from column of selected slot, from bottom to top {
-            //     if(curr.classList.contains('red')||curr.clasList.contains('yellow')) {
-                //         move on
-                //     } else {
-                    //         add the appropriate class
-                    //         break out of the loop (so that it doesn't keep adding classes to available cells)
-                    //     }
-                    // }
-                    
-                    
-                    
-                    
-                    
-                    
-                    // for (let i = 0; i < tableRow.length; i++){
-                        //     tableRow[i].addEventListener('click', (event) => {
-                            //         console.log(`${event.target.cellIndex}`)
-                            //     })
-                            // }
-                            // mySpot.forEach(placement => {
-                                //     placement.addEventListener('click', handlePlacement, {once: true})
-                                // })
-                                //     const placement = event.target
-                                //     // const currentPlayer = yellowTurn ? player2 : player1
-                                //     let mySpot =
-                                
-                                //     console.log('clicked')
-                                // }
-                                //let Connect4 = {}
-                                
-                                // let Connect4 =[
-                                    //         [0, 0, 0, 0, 0, 0, 0],
-                                    //         [0, 0, 0, 0, 0, 0, 0],
-                                    //         [0, 0, 0, 0, 0, 0, 0],
-                                    //         [0, 0, 0, 0, 0, 0, 0],
-                                    //         [0, 0, 0, 0, 0, 0, 0],
-                                    //         [0, 0, 0, 0, 0, 0, 0]
-                                    // ]
-                                    // const numberToWin = 4;
-                                    
-                                    //console.log the row and the column of the spot that you clicked
-                                    //console.log(`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`);
-                                    //be able to choose and change color of the different spots
-                                    //let row = event.target.parentElement.rowIndex
-                                    //console.log(row)
-                                    //let column = event.target.cellIndex
-                                    // let slot = (`${event.target.parentElement.rowIndex}, ${event.target.cellIndex}`)
-                                    // console.log(slot)
-                                    //console.log(placement)
-                                    //console.log(slot)
-                                    //console.log(row, "........")
-                                    //console.log(column)
-                                    //const currentPlayer = redTurn ? player1 : player2
-                                    //playColor(placement, currentPlayer, slot, row)
-                                    // function playColor(placement, currentPlayer, slot, row) {
-                                        //     // console.log(tableColumn,'????')
-                                        //     // // let column = event.target.cellIndex;
-                                        //     // // let row = [];
-                                        //     // for (let i = 5; i > -1; i--) {
-                                            //         //     if (tableColumn[i] === 5) {
-                                                //             //         slot.classList.add(red)
-                                                //             //     }
-                                                //             //     placement.classList.add(currentPlayer)
-                                                //             // }
-                                                //             // console.log(row, "//////")
-                                                //             // for (i = 5; i > -1; i--){
-                                                    //                 //     if (tableRow[5] === noPlay) {
-                                                        //                     //         placement.classList.add(currentPlayer)
-                                                        //                     //     }
-                                                        //                     //console.log(rows[i])
-                                                        
-                                                        //                     //}
-                                                        
-                                                        
-                                                        //placement.addEventListener('mouseover', handleHoverMethod)
-                                                        // function handleHoverMethod(event) {
-                                                            //     const placement = event.target
-                                                            //     const output=findPlacementLocation(placement)
-                                                            //     console.log(output)
-                                                            // }
-                                                            //const rows = ["F", "E", "D", "C", "A"]

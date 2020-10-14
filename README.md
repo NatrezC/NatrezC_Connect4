@@ -5,7 +5,14 @@
 Connect 4 is a two player game that you play to get 4 in a row. Player 1 goes first. After goes player2. The two players alternate until one player gets 4 pieces in a row going straight across, in a column, or even diagonally.
 
 ### Instructions:
-Player 1 also with the red chip goes first. 
+Objective of the game is to get four pieces in a straight line. This can be done horizontally, vertically, or diagonally.
+
+Player 1 has the red chip and goes first
+Player 2 turn is next and the cycle is repeated one chip at a time
+The chips slides down to the bottom row unless another chip is already in that place. Otherwise the chip will stack on top of the previous chip.
+Continue stacking until one player is declared victorious.
+
+Enjoy!!
 
 ### Technologies Used:
 HTML
