@@ -74,7 +74,6 @@ span{
     height:90px;
     width: 90px;
     display: flex;
-    
     background-color: red;
     border-radius: 50%;
     cursor: not-allowed;
@@ -88,3 +87,14 @@ span{
     background-color:white;
     border-radius: 50%;
     cursor: not-allowed;
+}
+
+.placement.black::after{
+    content:"";
+    height:90px;
+    width: 90px;
+    display: flex;
+    background-color:black;
+    border-radius: 50%;
+    cursor: not-allowed;
+}

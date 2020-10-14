@@ -23,8 +23,9 @@ const tableColumn = document.getElementsByTagName('td')//grabs each spot within 
 let mySpot = document.querySelectorAll('tr')
 
 let playConnect4 = true;
-const player1 = "red"
-const player2 = "yellow"
+let player1 = "red"
+let player2 = "yellow"
+const winner = "black"
 let noPlay = "white"
 const resetButton = document.querySelector('.reset')
 let redTurn = true 
@@ -134,14 +135,14 @@ function checkWhoWon(placement) {
     //
     let rowCheck = rowIndex;
     let colCheck = colIndex-1;
-    console.log(colIndex)
-    console.log(rowCheck,'rowCheck')
-    console.log(colCheck, "colCheck")
+    //console.log(colIndex)
+    //console.log(rowCheck,'rowCheck')
+    //console.log(colCheck, "colCheck")
     //checks the farthest left column
     while(colCheck >= 0) {
         //placement associated with the row and column
         const placeCheck = rows[rowCheck][colCheck];
-        console.log(placeCheck,'555')
+        console.log('placeCheck: ', placeCheck)
         //check if color matches players turn
         if (colorOfWinner(placeCheck)===color){
             winningPlace.push(placeCheck);
@@ -164,6 +165,7 @@ function checkWhoWon(placement) {
   }
   let isWinningCombo = winnerWinner(winningPlace);
   if (isWinningCombo) return;
+
 
   //vertical win
   winningPlace =[placement]
@@ -220,6 +222,37 @@ function checkWhoWon(placement) {
   }
   isWinningCombo = winnerWinner(winningPlace);
   if (isWinningCombo) return;
+
+  // Check diagonally left to right going down
+  winningPlace = [placement];
+  rowCheck = rowIndex - 1;
+  colCheck = colIndex - 1;
+  while (colCheck >= 0 && rowCheck >= 0) {
+    const placeCheck = rows[rowCheck][colCheck];
+    if (colorOfWinner(placeCheck) === color) {
+      winningPlace.push(placeCheck);
+      rowCheck--;
+      colCheck--;
+    } else {
+      break;
+    }
+  }
+  rowCheck = rowIndex + 1;
+  colCheck = colIndex + 1;
+  while (colCheck <= 6 && rowCheck <= 5) {
+    const placeCheck = rows[rowCheck][colCheck];
+    if (colorOfWinner(placeCheck) === color) {
+      winningPlace.push(placeCheck);
+      rowToCheck++;
+      colToCheck++;
+    } else {
+      break;
+    }
+  }
+  isWinningCombo = winnerWinner(winningPlace);
+  if (isWinningCombo) return;
+
+  
 }
 
 function winnerWinner(placements) {
@@ -228,7 +261,9 @@ function winnerWinner(placements) {
     if (placements.length < 4) return false;
     playConnect4 = false;
     for(const placement of placements) {
-        console.log('You won')
+        let selectSlots = placements
+        selectSlots.classList.add('black')
+        console.log(placements,"winner")
     }
     return true;
 }
